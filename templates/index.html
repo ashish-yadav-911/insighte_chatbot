@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insighte</title>
+    <style>
+        
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+root::{
+--font-Montserrat:"Montserrat", sans-serif;
+}
+.header{
+    padding:15px 0px; 
+    /* background:#fafafa; */
+    width:100%;
+}
+.container{
+    max-width:1100px;
+    margin:auto;
+    padding-left:15px;
+    padding-right:15px;
+}
+.logo{
+    max-width:100px;
+}
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(90deg, #3f95b0 0%,  #4a6394 100.23%);
+
+            color: #333;
+            margin: 0;
+        }
+        .chatbot-outer{
+            width: 100%;
+            padding-top:30px
+        }
+        h1 {
+            color: #4a4a4a;
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+        #chatbox {
+           padding:30px;
+            height: 400px;
+            overflow-y: auto;
+            border-radius: 8px 8px 0px 0px;
+            
+            background-color: #fff3;
+         
+            
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        .user-msg {
+            color: #0056b3;
+            margin: 10px 0;
+            text-align: right;
+            font-family:var(--font-Montserrat);
+        }
+        .bot-msg {
+            color: #282828;
+            font-family:var(--font-Montserrat);
+            margin: 10px 0;
+            text-align: left;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            height: 34px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-shadow: 0px -1px 8px rgba(136, 136, 136, 0.1);
+            font-size: 14px;
+            border: solid 1px #0000000d;
+            outline:none;    
+            background: #ffffff7a;     
+}
+        button {
+            padding: 10px 20px;
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            
+            cursor: pointer;
+            font-size: 14px;
+            border-radius: 30px;
+  width: 140px;
+  height: 38px;
+        }
+        button:hover {
+            background-color: #004494;
+        }
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+            position:relative;
+            background-color: #fff3;
+
+            padding: 15px;
+        }
+        .button-section{
+            position: absolute;
+  right: 28px;
+  top: 23px;
+
+        }
+        .bot-msg{
+            float: left;
+            clear:both;
+            background: #f7f7f7;
+            padding: 10px 25px 10px 50px;
+            border-radius: 30px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.02);
+            position: relative;     
+        }
+.bot-msg:before{
+    width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  content: '';
+  background: url(../image/user-img.png);
+  left: 7px;
+  top: 6px;
+  position: absolute;
+  background: url(https://www.theventuretours.com/wp-content/uploads/2020/03/avatar-icon-png-1-1024x1024.png);
+    background-position-x: 0%;
+    background-position-y: 0%;
+    background-repeat: repeat;
+    background-size: auto;
+  z-index: 9;
+  background-size: 27px;
+  border: solid 2px #e8e8e8;
+  background-repeat: no-repeat;
+  background-position: center center;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.12);
+}
+        .user-msg{
+            background: #dcecf7;;
+            padding: 10px 50px 10px 25px;
+  border-radius: 30px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.02);
+  float:right;
+  clear:both;
+  position:relative;
+        }
+        .user-msg:before{
+    width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  content: '';
+  background: url(https://www.pngall.com/wp-content/uploads/12/Avatar-Profile-Vector.png);
+  right: 7px;
+  top: 6px;
+  position: absolute;
+    background-position-x: 0%;
+    background-position-y: 0%;
+    background-repeat: repeat;
+    background-size: auto;
+  z-index: 9;
+  background-size: 27px;
+  border: solid 2px #e8e8e8;
+  background-repeat: no-repeat;
+  background-position: center center;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.12);
+}
+        @media (max-width: 600px) {
+            #chatbox {
+                height: 300px;
+            }
+            input[type="text"] {
+                width:calc(100% - 10px);
+            }
+            .button-group {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .button-section{right:10px;}
+            button{
+                width:unset;
+                max-width:130px;
+                padding:4px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+   <div class="header">
+    <div class="container">
+        <img src="https://cdn.prod.website-files.com/61239e7ad461c031e03733ce/66c6ee31c024a182743c8af2_Untitled%20(100%20x%2060%20px).svg" alt="logo" class="logo">
+    </div>
+   </div>
+    <div class="chatbot-outer">
+        <div class="container">
+            <div id="chatbox">
+                <div class="bot-msg">Hey,What's weighing on your mind?</div>
+            </div>
+            <div class="button-group">
+                
+                <input type="text" id="userInput" value="" placeholder="Ask me anything...">
+                <div class="button-section">
+                <button onclick="sendMessage()" id="submit">Send</button>
+                <button onclick="clearChat()">Clear Chat</button>
+            
+            </div>
+            </div>
+        </div>
+</div>
+    <script>
+        let conversationHistory = [];
+
+        async function sendMessage() {
+            const inputField = document.getElementById('userInput');
+            const message = inputField.value;
+            if (!message) return;
+        
+            // Add user's message to the chat
+            addMessageToChat("You", message, "user-msg");
+        
+            fetch('/chat', {
+                method: 'POST',  // Ensure it's a POST request
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ message }),  // Send data in the body
+            })
+            .then(response => response.text())
+            .then(data => {
+                addMessageToChat('Bot', data, 'bot-msg');
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+
+        async function clearChat() {
+            try {
+                await fetch('/clear_chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' }
+                });
+
+                conversationHistory = [];  // Clear the conversation history in the frontend
+                document.getElementById('chatbox').innerHTML = '';
+                addMessageToChat("Bot", "Namaste! Welcome to Iffort's virtual HR adda. How can I assist you today?", "bot-msg");
+            } catch (error) {
+                console.error('Error clearing chat:', error);
+                addMessageToChat("Bot", "Failed to clear the chat. Please try again.", "bot-msg");
+            }
+        }
+
+        function addMessageToChat(sender, message, className) {
+            const chatbox = document.getElementById('chatbox');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = className;
+            messageDiv.innerText = `${sender}: ${message}`;
+            chatbox.appendChild(messageDiv);
+            chatbox.scrollTop = chatbox.scrollHeight;
+        }
+        // submit button function
+        document.getElementById("userInput")
+    .addEventListener("keyup", function(e) {
+        if (e.keyCode === 13) {
+            document.getElementById("submit").click();
+            document.getElementById('userInput').value = "";
+        }
+    });
+    </script>
+</body>
+</html>
+<!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}"> -->
+
